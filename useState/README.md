@@ -84,6 +84,4 @@ import React, { useState } from "react";
 >
 > 18번째 줄과 19번째 줄을 보면 `onChangeName`을 호출하고 그 안에있는 `setName`함수에 파라미터를 넣어 `name`을 재설정 해준다.
 
-
-
 ---
