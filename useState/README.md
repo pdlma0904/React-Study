@@ -15,7 +15,6 @@ import React, { useState } from "react";
 > 함수가 호출되면 배열을 반환한다. 그 배열의 첫 번째는 원소는 상태 값, 두 번 째 원소에는 상태를 설정하는 함수이다.
 > 함수에 파라미터를 넣어서 호출하면 전달받은 파라미터로 값이 바뀌고 컴포넌트가 리렌더링 된다.
 
-
 ### useState로 숫자 카운터 구현
 
 > `Counter.js`
@@ -84,3 +83,7 @@ import React, { useState } from "react";
 > ```
 >
 > 18번째 줄과 19번째 줄을 보면 `onChangeName`을 호출하고 그 안에있는 `setName`함수에 파라미터를 넣어 `name`을 재설정 해준다.
+
+
+
+---

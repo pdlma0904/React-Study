@@ -15,8 +15,6 @@ function App() {
       </button>
       {visible && (
         <div>
-          <Counter />
-          <br />
           <Info />
         </div>
       )}
