@@ -1,70 +1,86 @@
-# Getting Started with Create React App
+# useState
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+`useState` 를 import 구문에 추가하여 사용하기
 
-## Available Scripts
+```
+import React, { useState } from "react";
+```
 
-In the project directory, you can run:
+> useState 함수의 파라미터에는 상태의 초기 값을 넣어준다.
+>
+> ```js
+> const [상태 값 저장 변수(첫 번째 원소), 상태 값 갱신 함수(두 번째 원소)] = useState(<상태 초기 값>);
+> ```
+>
+> 함수가 호출되면 배열을 반환한다. 그 배열의 첫 번째는 원소는 상태 값, 두 번 째 원소에는 상태를 설정하는 함수이다.
+> 함수에 파라미터를 넣어서 호출하면 전달받은 파라미터로 값이 바뀌고 컴포넌트가 리렌더링 된다.
 
-### `yarn start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### useState로 숫자 카운터 구현
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+> `Counter.js`
+>
+> ```js
+> import React, { useState } from "react"; //useState를 사용하기 위해 import
+>
+> const Counter = () => {
+>   const [value, setValue] = useState(0); //useState를 선언하고 초기값을 0으로 설정
+>   return (
+>     <div>
+>       <p>
+>         현재 카운터 값은 <b>{value}</b>입니다.
+>       </p>
+>       <button onClick={() => setValue(value + 1)}>+1</button>
+>       <button onClick={() => setValue(value - 1)}>-1</button>
+>     </div>
+>   );
+> };
+>
+> export default Counter;
+> ```
+>
+> 10번째 줄을 보면 `useState`의 두 번째 파라미터인 `setValue`를 호출하여 파라미터에 `value+1`을 넣어 기존 값에 1을 더해준다.
+>
+> 11번째 줄 코드도 `useState`를 이용하여 1을 빼주는 코드이다.
 
-### `yarn test`
+### useState 여러 번 사용
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+> `useState`의 변수만 바꿔서 여러번 사용 할 수 있다.
+>
+> `info.js`
+>
+> ```js
+> import React, { useState } from "react";
+>
+> const Info = () => {
+>   const [name, setName] = useState("");
+>   const [nickname, setNickname] = useState("");
+>
+>   const onChangeName = e => {
+>     setName(e.target.value);
+>   };
+>
+>   const onChangeNickname = e => {
+>     setNickname(e.target.value);
+>   };
+>
+>   return (
+>     <div>
+>       <div>
+>         <input value={name} onChange={onChangeName} />
+>         <input value={nickname} onChange={onChangeNickname} />
+>       </div>
+>       <div>
+>           <b>이름 :</b> {name}
+>       </div>
+>       <div>
+>           <b>닉네임 :</b> {nickname}
+>       </div>
+>     </div>
+>   );
+> };
+>
+> export default Info;
+> ```
+>
+> 18번째 줄과 19번째 줄을 보면 `onChangeName`을 호출하고 그 안에있는 `setName`함수에 파라미터를 넣어 `name`을 재설정 해준다.

@@ -4,11 +4,11 @@ const Info = () => {
   const [name, setName] = useState("");
   const [nickname, setNickname] = useState("");
 
-  const onChangeName = e => {
+  const onChangeName = (e) => {
     setName(e.target.value);
   };
 
-  const onChangeNickname = e => {
+  const onChangeNickname = (e) => {
     setNickname(e.target.value);
   };
 
@@ -19,10 +19,10 @@ const Info = () => {
         <input value={nickname} onChange={onChangeNickname} />
       </div>
       <div>
-          <b>이름 :</b> {name}
+        <b>이름 :</b> {name}
       </div>
       <div>
-          <b>닉네임 :</b> {nickname}
+        <b>닉네임 :</b> {nickname}
       </div>
     </div>
   );
